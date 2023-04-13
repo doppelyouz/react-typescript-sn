@@ -5,6 +5,8 @@
 a:focus,a:active{outline: none;}
 nav,footer,header,aside{display: block;}
 html, body{
+    background-color: rgb(71, 73, 42);
+font-family: 'Roboto', sans-serif;
 height: 100%;
 width: 100%;
 font-size: 100%;

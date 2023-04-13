@@ -1,0 +1,34 @@
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 6rem;
+    background-color: #726d2f;
+    color: white;
+    .topbar__logo {
+        font-size: 35px;
+    }
+    .topbar__menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        padding-right: 4rem;
+        .topbar__menuItem {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 20px;
+            color: white;
+        }
+        .topbar__image {
+            height: 50px;
+            width: 50px;
+            img {
+                border-radius: 50%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}

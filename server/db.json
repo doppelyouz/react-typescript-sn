@@ -1,4 +1,37 @@
 {
-    "users": [],
-    "posts": []
+  "users": [
+    {
+      "email": "1",
+      "password": "1",
+      "username": "1",
+      "posts": [],
+      "image": "https://sbcf.fr/wp-content/uploads/2018/03/sbcf-default-avatar.png",
+      "id": 1
+    },
+    {
+      "email": "2222222222222222222",
+      "password": "2",
+      "username": "222222222",
+      "posts": [],
+      "image": "https://sbcf.fr/wp-content/uploads/2018/03/sbcf-default-avatar.png",
+      "id": 2
+    },
+    {
+      "email": "",
+      "password": "2",
+      "username": "22222222222",
+      "posts": [],
+      "image": "https://sbcf.fr/wp-content/uploads/2018/03/sbcf-default-avatar.png",
+      "id": 3
+    },
+    {
+      "email": "222222222",
+      "password": "2",
+      "username": "222222222",
+      "posts": [],
+      "image": "https://sbcf.fr/wp-content/uploads/2018/03/sbcf-default-avatar.png",
+      "id": 4
+    }
+  ],
+  "posts": []
 }

@@ -1,0 +1,42 @@
+.gradientFormContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: linear-gradient(to bottom, #FFD200, #F7971E);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
+  }
+  
+  .gradientForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .gradientFormInput {
+    margin-bottom: 20px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    font-size: 16px;
+  }
+  
+  .gradientFormButton {
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .gradientFormButton:hover {
+    background-color: #3e8e41;
+  }
