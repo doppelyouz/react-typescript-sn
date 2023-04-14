@@ -31,6 +31,14 @@
       "posts": [],
       "image": "https://sbcf.fr/wp-content/uploads/2018/03/sbcf-default-avatar.png",
       "id": 4
+    },
+    {
+      "email": "2",
+      "password": "2",
+      "username": "2",
+      "posts": [],
+      "image": "https://sbcf.fr/wp-content/uploads/2018/03/sbcf-default-avatar.png",
+      "id": 5
     }
   ],
   "posts": [
@@ -54,6 +62,13 @@
       "image": "https://www.5.ua/media/pictures/original/194292.jpg?t=1600087834",
       "userId": 1,
       "id": 5
+    },
+    {
+      "title": "asc",
+      "about": "csa",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMJ-MYpDC929IJ_5UFl_K7l6VglHSrxAwam4FJ015wyg&s",
+      "userId": 1,
+      "id": 6
     }
   ]
 }
