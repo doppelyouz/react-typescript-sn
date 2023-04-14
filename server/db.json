@@ -35,11 +35,25 @@
   ],
   "posts": [
     {
-      "title": "321",
-      "about": "321",
-      "image": "321",
+      "title": "dsadsa",
+      "about": "dsadsadsa",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcAqqdZPdXzwxBRe30eE2-tbK88KqnWKqGsOkfhEZ8xg&s",
       "userId": 1,
-      "id": 2
+      "id": 3
+    },
+    {
+      "title": "dsadsadsa",
+      "about": "dsadsadsa",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfLBCr7G1Wj2cTCLgSx93X2RwbjLSbCKUXb22GtKjp9UE_WtS_OufuFP70H8Mffc_B4xI&usqp=CAU",
+      "userId": 1,
+      "id": 4
+    },
+    {
+      "title": "dsadsa",
+      "about": "dsadsadsa",
+      "image": "https://www.5.ua/media/pictures/original/194292.jpg?t=1600087834",
+      "userId": 1,
+      "id": 5
     }
   ]
 }

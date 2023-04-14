@@ -1,5 +1,10 @@
 .feed {
-    margin: 0 auto;
+    margin: 25px auto;
     max-width: 1000px;
     width: 100%;
+    .feed__content {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 30px;
+    }
 }
