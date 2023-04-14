@@ -6,7 +6,12 @@ export interface User {
     posts: number[];
     image: string;
   }
-  
-export interface FetchUsersResponse {
-    users: User[];
+
+export interface Post {
+    id?: number;
+    title: string;
+    about: string;
+    image: string;
+    userId: number;
 }
+ 

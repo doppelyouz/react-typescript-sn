@@ -26,6 +26,7 @@ const SignUp: React.FC = () => {
     const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUsername(event.target.value);
     };
+    
     const signUpSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const user: User = {

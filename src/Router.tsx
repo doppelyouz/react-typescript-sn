@@ -1,7 +1,10 @@
 import { Routes, Route} from 'react-router-dom';
-import Registration from './views/registration/Registration';
 import { useSelector } from 'react-redux';
 import { RootState } from './store/store';
+import Feed from './views/feed/Feed';
+import Profile from './views/profile/Profile';
+import Registration from './views/registration/Registration';
+import NewPost from './views/newPost/NewPost';
 
 const Router = () => {
 
@@ -12,9 +15,9 @@ const Router = () => {
           {
             currentUser ? 
             <>
-              <Route path="/" element={<Registration />} />
-              <Route path="/profile" element={<Registration />} />
-              <Route path="/create" element={<Registration />} />
+              <Route path="/" element={<Feed />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/create" element={<NewPost />} />
             </>
             :
             <>
