@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 
 import { createPost } from '../../service/postsService';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Post } from '../../shared/types';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../store/store';
 
 import styles from './newPost.module.scss'
@@ -15,9 +16,15 @@ const NewPost: React.FC = () => {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [about, setAbout] = useState("");
+  
+  const client = useQueryClient();
+  const navigate = useNavigate();
 
   const {mutate: create} = useMutation({
-      mutationFn: createPost
+      mutationFn: createPost,
+      onSuccess: () => {
+          client.invalidateQueries({queryKey: ['posts', 'all']})
+      }
   })
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,6 +50,7 @@ const NewPost: React.FC = () => {
       userId: Number(currentUser?.id)
     }
     create(post)
+    navigate('/');
 
     setTitle('')
     setAbout('')
@@ -60,7 +68,7 @@ const NewPost: React.FC = () => {
         <div className={styles.content}>
           <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.formGroup}>
-              <label htmlFor="name">Title:</label>
+              <label>Title:</label>
               <input
                 type="text"
                 required
@@ -69,7 +77,7 @@ const NewPost: React.FC = () => {
               />
             </div>
             <div className={styles.formGroup}>
-              <label htmlFor="email">Image:</label>
+              <label>Image:</label>
               <input
                 type="text"
                 required
@@ -78,7 +86,7 @@ const NewPost: React.FC = () => {
               />
             </div>
             <div className={styles.formGroup}>
-              <label htmlFor="message">Сообщение:</label>
+              <label>Сообщение:</label>
               <textarea
                 required
                 value={about}

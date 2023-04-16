@@ -14,20 +14,43 @@ export async function getPosts(): Promise<Post[]> {
   }
 }
 
-export async function getPostById(id: string): Promise<Post | undefined> {
+export async function getPostById(id: number): Promise<Post> {
     try {
       const response = await axios.get(endpoint + 'posts/' + id);
       return response.data;
     } catch (error) {
       console.error(error);
+      throw new Error('Failed to getPostById.');
     }
-  }
+}
 
-export async function createPost(post: Post): Promise<Post | undefined> {
+export async function createPost(post: Post): Promise<Post> {
   try {
     const response = await axios.post(endpoint + 'posts', post);
     return response.data;
   } catch (error) {
     console.error(error);
+    throw new Error('Failed to create post.');
+  }
+}
+
+export async function deletePost(id: string | undefined): Promise<void> {
+  try {
+    if(id) {
+      axios.delete(endpoint + 'posts/' + id);
+    }
+  } catch (error) {
+    console.error(error);
+    throw new Error('Failed to delete post.');
+  }
+}
+
+export async function updatePost(post: Post): Promise<Post> {
+  try {
+    const response = await axios.put(endpoint + 'posts/' + post.id, post);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw new Error('Failed to update post.');
   }
 }

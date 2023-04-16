@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Post } from '../../shared/types';
+
 import s from './post.module.scss';
 
 type Props = {
@@ -12,7 +14,9 @@ const PostComponent: React.FC<Props> = ({ post }) => {
   return (
     <div className={s.post}>
        <div className={s.post__image}>
-        <img src={image} alt={title} />
+        <Link to={`/posts/` + post.id}>
+          <img src={image} alt={title} />
+        </Link>
       </div>
       <h2 className={s.post__title}>{title}</h2>
     </div>

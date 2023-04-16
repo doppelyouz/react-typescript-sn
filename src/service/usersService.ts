@@ -14,6 +14,15 @@ export async function getUsers(): Promise<User[]> {
   }
 }
 
+export async function getUserById(id: string): Promise<User | undefined> {
+  try {
+    const response = await axios.get(endpoint + 'users/' + id);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 export async function createUser(user: User): Promise<User | undefined> {
   try {
     const response = await axios.post(endpoint + 'users', user);
