@@ -19,7 +19,7 @@ const Profile: React.FC = () => {
   const { currentUser } = useSelector((state: RootState) => state.user)
 
   const {data: posts, isLoading, error, isSuccess} = useQuery({
-    queryFn: getPosts,
+    queryFn: () => getPosts(3, 1),
     queryKey: ['posts', 'all']
   })
 
@@ -48,13 +48,16 @@ const Profile: React.FC = () => {
       <div className={s.profile__email}>{currentUser.email}</div>
       <button className={s.profile__options} onClick={() => dispatch(logout())}>Log out</button>
       <button className={s.profile__options}>Settings</button>
-      <div className={s.profile__posts}>
+      {
+        yourPosts.length > 0 &&
+        <div className={s.profile__posts}>
           {
             yourPosts.map(post =>
               <Post post={post} key={post.id} />
             )
           }
-      </div>
+        </div>
+      }
     </div>
   )
 }
