@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
@@ -18,27 +18,46 @@ const Profile: React.FC = () => {
   const [yourPosts, setYourPosts] = useState<PostType[]>([]);
   const { currentUser } = useSelector((state: RootState) => state.user)
 
-  const {data: posts, isLoading, error, isSuccess} = useQuery({
-    queryFn: () => getPosts(3, 1),
+  const [posts, setPosts] = useState<PostType[]>([]);
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const itemsPerPage = 3;
+  const dispatch = useDispatch();
+  
+  const {data, isLoading, error, isSuccess} = useQuery({
+    queryFn: getPosts,
     queryKey: ['posts', 'all']
   })
-
+  
   useEffect(() => {
-    if(isSuccess && !isLoading && !error) {
-      setYourPosts(posts.filter(post => post.userId === currentUser?.id))
+    if(isSuccess) {
+      const yourPosts = data.filter(post => post.userId === currentUser?.id)
+      setYourPosts(yourPosts);
     }
-  }, [currentUser?.id, error, isLoading, isSuccess, posts])
+  }, [currentUser?.id, data, isSuccess])
 
-  const dispatch = useDispatch();
-
-  console.log(yourPosts);
+  useMemo(() => {
+    setPosts(yourPosts.slice(currentPage * itemsPerPage, currentPage * itemsPerPage + itemsPerPage))
+  }, [currentPage, yourPosts])
 
   if(error) {
     return <div>Something went wrong</div>
   }
+
   if(isLoading) {
     return <div>Loading...</div>
   }
+
+  const prevPage = () => {
+    setCurrentPage(prev => prev - 1)
+  }
+
+  const nextPage = () => {
+    setCurrentPage(prev => prev + 1)
+  }
+
+  const nextChecker = Math.ceil(yourPosts.length / 3) - 1 <= currentPage;
+  
 
   return (
     currentUser && 
@@ -49,13 +68,20 @@ const Profile: React.FC = () => {
       <button className={s.profile__options} onClick={() => dispatch(logout())}>Log out</button>
       <button className={s.profile__options}>Settings</button>
       {
-        yourPosts.length > 0 &&
+        posts.length > 0 &&
         <div className={s.profile__posts}>
           {
-            yourPosts.map(post =>
+            posts.map(post =>
               <Post post={post} key={post.id} />
             )
           }
+        </div>
+      }
+      {
+        yourPosts.length > 0 && 
+        <div className={s.profile__pagination}>
+          <button className={s.profile__options} onClick={prevPage} disabled={currentPage === 0}>Prev</button>
+          <button className={s.profile__options} onClick={nextPage} disabled={nextChecker}>Next</button>
         </div>
       }
     </div>

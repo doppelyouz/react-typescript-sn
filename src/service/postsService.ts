@@ -4,10 +4,20 @@ import { Post } from '../shared/types';
 
 const endpoint = "http://localhost:3001/";
 
-export async function getPosts(limit:number, currentPage: number): Promise<Post[]> {
+export async function getPosts(): Promise<Post[]> {
   try {
-    const response = await axios.get(endpoint + `posts?_limit=${limit}&_page=${currentPage}`);
-    return response.data;
+      const response = await axios.get(endpoint + `posts`);
+      return response.data;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
+export async function getPostsByPages(limit: number, page: number): Promise<Post[]> {
+  try {
+      const response = await axios.get(endpoint + `posts?_limit=${limit}&_page=${page}`);
+      return response.data;
   } catch (error) {
     console.error(error);
     return [];

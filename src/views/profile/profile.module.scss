@@ -34,13 +34,24 @@
         margin-bottom: 8px;
         cursor: pointer;
     }
+    .profile__options:disabled {
+        background-color: #6e6b6b;
+        color: rgb(231, 231, 231);
+    }
     .profile__posts {
         background-color: #97977e;
         margin: 20px;
         padding: 40px;
         display: grid;
+        width: 100%;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 30px;
         border-radius: 20px;
+    }
+    .profile__pagination {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
     }
 }

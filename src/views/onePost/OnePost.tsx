@@ -18,7 +18,7 @@ const OnePost: React.FC = () => {
 
     const { data: post, isLoading, error, isSuccess } = useQuery({
         queryFn: () => getPostById(Number(id)),
-        queryKey: ['posts', 'getById', id]
+        queryKey: ['posts', id]
     })
 
     const client = useQueryClient();
@@ -31,7 +31,7 @@ const OnePost: React.FC = () => {
     const { mutate: EDIT } = useMutation({
         mutationFn: (post: Post) => updatePost(post),
         onSuccess: () => {
-          client.invalidateQueries({ queryKey: ['posts', 'getById', id] })
+          client.invalidateQueries({ queryKey: ['posts', id] })
         }
     });
 
