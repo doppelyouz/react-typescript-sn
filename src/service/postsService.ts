@@ -14,6 +14,17 @@ export async function getPosts(): Promise<Post[]> {
   }
 }
 
+export async function getPostsByFirstTime(): Promise<Post[]> {
+  try {
+      const response = await axios.get(endpoint + `posts?_limit=9`);
+      return response.data;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
+
 export async function getPostsByPages(limit: number, page: number): Promise<Post[]> {
   try {
       const response = await axios.get(endpoint + `posts?_limit=${limit}&_page=${page}`);

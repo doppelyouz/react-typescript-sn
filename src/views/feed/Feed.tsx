@@ -1,10 +1,11 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Post from '../../components/post/Post'
 import { Post as PostType} from '../../shared/types'
 import { useQuery } from '@tanstack/react-query'
-import { getPosts, getPostsByPages } from '../../service/postsService'
+import { getPostsByFirstTime, getPostsByPages } from '../../service/postsService'
 
 import s from './feed.module.scss'
+
 const Feed: React.FC = () => {
 
   const [posts, setPosts] = useState<PostType[]>([]);
@@ -13,13 +14,15 @@ const Feed: React.FC = () => {
   const itemsPerPage = 3;
 
   const { data, isLoading, error, isSuccess} = useQuery({
-    queryFn: () => getPosts(),
+    queryFn: () => getPostsByFirstTime(),
     queryKey: ['posts', 'all']
   })
 
+  console.log(posts);
+
   useEffect(() => {
     if(isSuccess && currentPage === 1) {
-      setPosts(data.slice(0, 9))
+      setPosts(data)
       setCurrentPage(prev => prev + 3)
     }
   }, [currentPage, data, isSuccess])
@@ -31,7 +34,7 @@ const Feed: React.FC = () => {
           setPosts([...posts, ...newPosts])
           setCurrentPage(prev => prev + 1)
         })
-        .finally(() => setFetching(false))
+        .finally()
     }
   }, [currentPage, fetching, posts])
 
