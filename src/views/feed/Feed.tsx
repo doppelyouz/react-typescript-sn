@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import Post from '../../components/post/Post'
 import { Post as PostType} from '../../shared/types'
 import { useQuery } from '@tanstack/react-query'
@@ -16,6 +16,7 @@ const Feed: React.FC = () => {
     queryFn: () => getPosts(),
     queryKey: ['posts', 'all']
   })
+
   useEffect(() => {
     if(isSuccess && currentPage === 1) {
       setPosts(data.slice(0, 9))

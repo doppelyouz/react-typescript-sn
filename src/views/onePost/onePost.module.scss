@@ -56,6 +56,9 @@
             background-image: linear-gradient(to bottom, #3e4566, #100931);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
+        a {
+            color: inherit;
+        }
     }
     .formGroup {
         display: flex;

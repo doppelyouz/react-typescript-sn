@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { deletePost, getPostById, updatePost } from '../../service/postsService'
 import { Post } from '../../shared/types'
@@ -31,7 +31,8 @@ const OnePost: React.FC = () => {
     const { mutate: EDIT } = useMutation({
         mutationFn: (post: Post) => updatePost(post),
         onSuccess: () => {
-          client.invalidateQueries({ queryKey: ['posts', id] })
+            client.invalidateQueries(['posts', id]);
+            client.invalidateQueries(['posts', 'all']);
         }
     });
 
@@ -39,6 +40,7 @@ const OnePost: React.FC = () => {
         mutationFn: deletePost,
         onSuccess: () => {
             client.invalidateQueries({ queryKey: ['posts', 'all'] })
+            navigate('/');
         }
     })
 
@@ -67,7 +69,6 @@ const OnePost: React.FC = () => {
 
     const deletePostHandler = () => {
         DELETE(id)
-        navigate('/');
     }
 
     const editPost = () => {
@@ -94,7 +95,9 @@ const OnePost: React.FC = () => {
                 isSuccess &&
 
                 <>
-                    <div className={s.post__image}><img src={post?.image} alt="postImage" /></div>
+                    <div className={s.post__image}>
+                        <img src={post?.image} alt="postImage" />
+                    </div>
                     <div className={s.post__info}>
                         {
                             isEditing ?
@@ -131,6 +134,7 @@ const OnePost: React.FC = () => {
                                         :
                                         <button className={s.gradientBtn + ' ' + s.edit} onClick={editingSwitcher}>EDIT</button>
                                 }
+                                <button className={s.gradientBtn}><Link to="/">Back</Link></button>
                             </div>
                         }
                     </div>

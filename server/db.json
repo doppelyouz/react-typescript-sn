@@ -50,8 +50,8 @@
       "id": 2
     },
     {
-      "title": "cs",
-      "about": "cs",
+      "title": "cs2 scoro!",
+      "about": "cs2 scoro",
       "image": "https://steamuserimages-a.akamaihd.net/ugc/1305431056808653122/235C4D7323985B03C88A0260576915454F9BD508/?imw=512&imh=512&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true",
       "userId": 1,
       "id": 3
@@ -132,13 +132,6 @@
       "image": "https://img.freepik.com/free-photo/lavender-field-at-sunset-near-valensole_268835-3910.jpg",
       "userId": 1,
       "id": 17
-    },
-    {
-      "title": "190",
-      "about": "190",
-      "image": "https://img.freepik.com/free-photo/lavender-field-at-sunset-near-valensole_268835-3910.jpg",
-      "userId": 1,
-      "id": 19
     }
   ]
 }
