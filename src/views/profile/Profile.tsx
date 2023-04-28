@@ -11,6 +11,7 @@ import Post from '../../components/post/Post';
 import { useDispatch } from 'react-redux';
 
 import s from './profile.module.scss'
+import { Link } from 'react-router-dom';
 
 
 const Profile: React.FC = () => {
@@ -66,7 +67,6 @@ const Profile: React.FC = () => {
       <div className={s.profile__username}>{currentUser.username}</div>
       <div className={s.profile__email}>{currentUser.email}</div>
       <button className={s.profile__options} onClick={() => dispatch(logout())}>Log out</button>
-      <button className={s.profile__options}>Settings</button>
       {
         posts.length > 0 &&
         <div className={s.profile__posts}>
