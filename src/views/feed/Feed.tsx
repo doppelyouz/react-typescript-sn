@@ -15,10 +15,8 @@ const Feed: React.FC = () => {
 
   const { data, isLoading, error, isSuccess} = useQuery({
     queryFn: () => getPostsByFirstTime(),
-    queryKey: ['posts', 'all']
+    queryKey: ['posts', 'all', 9]
   })
-
-  console.log(posts);
 
   useEffect(() => {
     if(isSuccess && currentPage === 1) {
@@ -31,12 +29,14 @@ const Feed: React.FC = () => {
     if(fetching) {
       getPostsByPages(itemsPerPage, currentPage)
         .then(newPosts => {
-          setPosts([...posts, ...newPosts])
-          setCurrentPage(prev => prev + 1)
+          setPosts(prevPosts => [...prevPosts, ...newPosts])
+          setCurrentPage(prevPage => prevPage + 1)
         })
-        .finally()
+        .catch(error => {
+          console.error(error);
+        });
     }
-  }, [currentPage, fetching, posts])
+  }, [fetching]);
 
   useEffect(() => {
     document.addEventListener('scroll', scrollHandler)
